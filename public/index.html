@@ -3,13 +3,21 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Plan Eat</title>
 </head>
-<body ng-app="plan-eat">
+<body ng-app="planeat">
+  <div ng-controller="loginController as login"></div>
+  <div ng-controller="homeController as home"></div>
+  <div ng-view></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script src="https://code.angularjs.org/1.4.9/angular-route.min.js"></script>
   <script src="app.js"></script>
+  <script src="login/bar.directive.js"></script>
+  <script src="login/login.controller.js"></script>
+  <script src="home/home.controller.js"></script>
+  <script src="home/homebar.directive.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
