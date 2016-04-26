@@ -10,4 +10,7 @@ function home($http, $window) {
   vm.logout = function() {
     $http.get('http://localhost:8080/logout');
   }
+
+  vm.active = 'home';
+
 }
