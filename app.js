@@ -11,10 +11,12 @@ var url = 'mongodb://localhost:27017/planeat';
 //routes
 var signup = require('./routes/signup');
 var checkuser = require('./routes/checkuser');
+var login = require('./routes/login');
 
 app.use(cookieParser());
 app.use('/signup', signup);
 app.use('/checkuser', checkuser);
+app.use('/login', login);
 app.use(express.static('./public'));
 
 var port = process.env.PORT || 8080;

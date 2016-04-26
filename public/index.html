@@ -7,26 +7,16 @@
   <title>Plan Eat</title>
 </head>
 <body ng-app="planeat">
-  <div ng-controller="menuController as menu">
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Plan Eat</a>
-        </div>
-        <a type="button" href="#/signup" class="btn btn-default navbar-btn navbar-right">Sign Up</a>
-        <a type="button" href="#/login" ng-click="menu.login()" class="btn btn-default navbar-btn navbar-right">Log In</a>
-        <a type="button" href="#" ng-click="menu.logout()" class="btn btn-default navbar-btn navbar-right">Log Out</a>
-      </div>
-    </nav>
-  </div>
-
+  <div ng-controller="loginController as login"></div>
+  <div ng-controller="homeController as home"></div>
   <div ng-view></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script src="https://code.angularjs.org/1.4.9/angular-route.min.js"></script>
   <script src="app.js"></script>
-  <script src="menu/menu.controller.js"></script>
+  <script src="login/bar.directive.js"></script>
   <script src="login/login.controller.js"></script>
+  <script src="home/home.controller.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>

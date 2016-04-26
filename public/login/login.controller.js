@@ -2,9 +2,9 @@ var app = angular.module('planeat');
 
 app.controller('loginController', login);
 
-app.$inject = ['$http'];
+app.$inject = ['$http', '$window'];
 
-function login($http) {
+function login($http, $window) {
   var vm = this;
 
   vm.error = false;
@@ -51,6 +51,18 @@ function login($http) {
   }
 
   vm.login = function() {
-
+    var user = $http.post('http://localhost:8080/login', {user: vm.user, pwd: vm.pwd});
+    user.then(function(data) {
+      vm.user = "";
+      vm.pwd = "";
+      if (data.status === 200) {
+        vm.error = false;
+        $window.location.href = '#/home';
+      }
+      else {
+        vm.error = true;
+        vm.msg = 'Wrong login information';
+      }
+    })
   }
 }
