@@ -8,7 +8,13 @@
 </head>
 <body ng-app="planeat">
   <div ng-controller="loginController as login"></div>
-  <div ng-controller="homeController as home"></div>
+  <div ng-controller="homeController as home">
+    <homebar></homebar>
+    <div ng-controller="calendarController as calendar"></div>
+    <div ng-controller="foodsController as foods"></div>
+    <div ng-controller="recipesController as recipes"></div>
+    <div ng-controller="inventoryController as inventory"></div>
+  </div>
   <div ng-view></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
@@ -18,6 +24,10 @@
   <script src="login/login.controller.js"></script>
   <script src="home/home.controller.js"></script>
   <script src="home/homebar.directive.js"></script>
+  <script src="calendar/calendar.controller.js"></script>
+  <script src="foods/foods.controller.js"></script>
+  <script src="recipes/recipes.controller.js"></script>
+  <script src="inventory/inventory.controller.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>

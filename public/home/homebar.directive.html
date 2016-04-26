@@ -3,6 +3,13 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Plan Eat</a>
     </div>
+    <ul class="nav navbar-nav" id="menu">
+      <li role="presentation" ng-class="{active: home.active === 'home'}" ng-click="home.active = 'home'"><a href="#/home">Home</a></li>
+      <li role="presentation" ng-class="{active: home.active === 'calendar'}" ng-click="home.active = 'calendar'"><a href="#/calendar">Calendar</a></li>
+      <li role="presentation" ng-class="{active: home.active === 'foods'}" ng-click="home.active = 'foods'"><a href="#/foods">My foods</a></li>
+      <li role="presentation" ng-class="{active: home.active === 'recipes'}" ng-click="home.active = 'recipes'"><a href="#/recipes">My recipes</a></li>
+      <li role="presentation" ng-class="{active: home.active === 'inventory'}" ng-click="home.active = 'inventory'"><a href="#/inventory">Inventory</a></li>
+    </ul>
     <a type="button" href="#/" ng-click="home.logout()" class="btn btn-default navbar-btn navbar-right">Log out</a>
   </div>
 </nav>
