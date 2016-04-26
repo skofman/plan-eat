@@ -17,9 +17,7 @@ router.post('/', jsonParser, function(req, res) {
   var newUser = {
     username: req.body.user,
     pwd: hash(req.body.pwd),
-    session: "",
-    first: "",
-    last: ""
+    session: ""
   }
   mongoClient.connect(url, function(err, db) {
     if (!err) {

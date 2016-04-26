@@ -10,6 +10,11 @@ function login($http, $window) {
   vm.error = false;
   vm.msg = "";
 
+  var check = $http.get('http://localhost:8080/checklogin');
+  check.then(function(data) {
+    $window.location.href = '#/home'
+  })
+
   vm.checkuser = function() {
     var user = $http.post('http://localhost:8080/checkuser', {user: vm.user, pwd: vm.pwd});
     user.then(function(data) {
