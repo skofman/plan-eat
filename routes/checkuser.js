@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
 
 var jsonParser = bodyParser.json();
-var url = 'mongodb://localhost:27017/planeat';
+var url = 'mongodb://plan:eat@ds021711.mlab.com:21711/planeat';
 
 router.post('/', jsonParser, function(req, res) {
   var checkUser = {

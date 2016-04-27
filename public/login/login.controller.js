@@ -10,13 +10,13 @@ function login($http, $window) {
   vm.error = false;
   vm.msg = "";
 
-  var check = $http.get('http://localhost:8080/checklogin');
+  var check = $http.get('http://localhost:3000/checklogin');
   check.then(function(data) {
     $window.location.href = '#/home'
   })
 
   vm.checkuser = function() {
-    var user = $http.post('http://localhost:8080/checkuser', {user: vm.user, pwd: vm.pwd});
+    var user = $http.post('http://localhost:3000/checkuser', {user: vm.user, pwd: vm.pwd});
     user.then(function(data) {
       if (data.status === 200) {
         vm.error = false;
@@ -42,7 +42,7 @@ function login($http, $window) {
       vm.msg = 'Password shall be at least 3 characters long';
       return;
     }
-    var user = $http.post('http://localhost:8080/signup', {user: vm.user, pwd: vm.pwd});
+    var user = $http.post('http://localhost:3000/signup', {user: vm.user, pwd: vm.pwd});
     user.then(function(data) {
       if (data.status === 201) {
         vm.error = false;
@@ -56,7 +56,7 @@ function login($http, $window) {
   }
 
   vm.login = function() {
-    var user = $http.post('http://localhost:8080/login', {user: vm.user, pwd: vm.pwd});
+    var user = $http.post('http://localhost:3000/login', {user: vm.user, pwd: vm.pwd});
     user.then(function(data) {
       vm.user = "";
       vm.pwd = "";

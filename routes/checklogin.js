@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoClient = require('mongodb').MongoClient;
 
-var url = 'mongodb://localhost:27017/planeat';
+var url = 'mongodb://plan:eat@ds021711.mlab.com:21711/planeat';
 
 router.get('/', function(req, res) {
   mongoClient.connect(url, function(err, db) {
