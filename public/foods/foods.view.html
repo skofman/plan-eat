@@ -1,3 +1,41 @@
 <div class="container">
-  <h1>FOODS</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          Your custom foods
+        </div>
+        <div class="panel-body">
+
+        </div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Your saved foods
+        </div>
+        <div class="panel-body">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <form class="form-inline">
+        <input type="text" class="form-control" ng-model="foods.search" placeholder="Search food">
+        <button type="submit" ng-click="foods.searchFoods()" class="btn btn-info">Search</button>
+      </form>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Results:
+        </div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item" ng-click="foods.getItem(item.fields.item_id)" ng-repeat="item in foods.results.hits">
+              {{ item.fields.item_name }} - {{ item.fields.brand_name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

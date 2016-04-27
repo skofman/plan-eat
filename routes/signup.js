@@ -5,7 +5,7 @@ var mongoClient = require('mongodb').MongoClient;
 var crypto = require('crypto');
 
 var jsonParser = bodyParser.json();
-var url = 'mongodb://localhost:27017/planeat';
+var url = 'mongodb://plan:eat@ds021711.mlab.com:21711/planeat';
 
 function hash(pwd) {
   var hash = crypto.createHash('sha256');
