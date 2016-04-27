@@ -9,3 +9,39 @@ body {
 form input {
   width: 80% !important;
 }
+
+.nutrition {
+  border-bottom: 5px solid black;
+  margin: 0;
+}
+
+#nutrilabel {
+  margin: 0;
+  font-weight: bold;
+}
+
+#facts hr {
+  margin: 0;
+}
+
+#facts p,
+#facts h5,
+#facts h6 {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.box {
+  border: 2px solid grey;
+  text-align: center;
+  width: 90px;
+}
+
+.box h5 {
+  margin-bottom: 5px;
+}
+
+.list-group-item:hover {
+  cursor: pointer;
+  background-color: #f7cac9;
+}
