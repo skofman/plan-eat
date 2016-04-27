@@ -1,0 +1,156 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a href="#/foods/item">{{ foods.item.brand_name }}</a>
+    <h4>{{ foods.item.item_name }}</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-info">
+      <div class="panel-body" id="facts">
+        <h3 id="nutrilabel">Nutrition Facts</h3>
+        <p class="description">Serving size {{ foods.item.nf_serving_size_qty }} {{ foods.item.nf_serving_size_unit }} <span ng-show="foods.item.nf_serving_weight_grams">({{ foods.item.nf_serving_weight_grams }}g)</span></p>
+        <p class="description" ng-show="foods.item.nf_servings_per_container">Servings per container: {{ foods.item.nf_servings_per_container }}</p>
+        <hr class="nutrition">
+        <h6>Amount per Serving</h6>
+        <hr>
+        <div class="row">
+          <div class="col-md-5">
+            <p><b>Calories</b> {{ foods.item.nf_calories }}</h5>
+          </div>
+          <div class="col-md-7">
+            <p class="pull-right">Calories from fat {{ foods.item.nf_calories_from_fat }}</p>
+          </div>
+        </div>
+        <hr class="nutrition">
+        <h6>% Daily Values*</h6>
+        <hr>
+        <div class="row">
+          <div class="col-md-8">
+            <p><b>Total fat</b> {{ foods.item.nf_total_fat }}g</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="pull-right">{{ foods.item.fatdv }}%</h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-8">
+            <p>Saturated fat {{ foods.item.nf_saturated_fat }}g</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="pull-right">{{ foods.item.satfatdv }}%</h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-8">
+            <p>Trans Fat {{ foods.item.nf_trans_fatty_acid }}g</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="pull-right">{{ foods.item.transfatdv }}%</h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-8">
+            <p><b>Cholesterol</b> {{ foods.item.nf_cholesterol }}mg</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="pull-right">{{ foods.item.choldv }}%</h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-8">
+            <p><b>Sodium</b> {{ foods.item.nf_sodium }}mg</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="pull-right">{{ foods.item.sodiumdv }}%</h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-8">
+            <p><b>Total Carbohydrate</b> {{ foods.item.nf_total_carbohydrate }}g</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="pull-right">{{ foods.item.carbdv }}%</h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-8">
+            <p>Dietary Fiber {{ foods.item.nf_dietary_fiber }}g</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="pull-right">{{ foods.item.fiberdv }}%</h5>
+          </div>
+        </div>
+        <hr>
+        <p>Sugars {{ foods.item.nf_sugars }}g</p>
+        <hr>
+        <p><b>Protein</b> {{ foods.item.nf_protein }}g</p>
+        <hr class="nutrition">
+        <div class="row">
+          <div class="col-md-6">
+            <p>Vitamin A {{ foods.item.nf_vitamin_a_dv }}%</p>
+          </div>
+          <div class="col-md-6">
+            <p>Vitamin C {{ foods.item.nf_vitamin_c_dv }}%</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <p>Calcium {{ foods.item.nf_calcium_dv }}%</p>
+          </div>
+          <div class="col-md-6">
+            <p>Iron {{ foods.item.nf_iron_dv }}%</p>
+          </div>
+        </div>
+        <hr>
+        <p>
+          * Percent Daily Values are based on a 2000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4>Nutrition summary:</h4>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="box">
+              <h5>Calories</h5>
+              <p>{{ foods.item.nf_calories }}</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box">
+              <h5>Fat</h5>
+              <p>{{ foods.item.nf_total_fat }}g</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box">
+              <h5>Carbs</h5>
+              <p>{{ foods.item.nf_total_carbohydrate }}g</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box">
+              <h5>Protein</h5>
+              <p>{{ foods.item.nf_protein }}g</p>
+            </div>
+          </div>
+        </div>
+        <br>
+        <p>There are <b>{{ foods.item.nf_calories }} calories</b> in {{ foods.item.nf_serving_size_qty }} {{ foods.item.nf_serving_size_unit }} of {{ foods.item.item_name }}</p>
+        <p>Calorie breakdown: {{ foods.item.fatpct }}% fat, {{ foods.item.carbpct }}% carbs, {{ foods.item.protpct }}% protein.</p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-info">Save item</button>
+  </div>
+</div>

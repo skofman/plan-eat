@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+      <button type="button" ng-click="foods.found = !foods.found" ng-show="foods.found" class="btn btn-primary btn-block">Back to search results</button>
+      <br ng-show="foods.found">
       <div class="panel panel-danger">
         <div class="panel-heading">
           Your custom foods
@@ -19,23 +21,8 @@
       </div>
     </div>
     <div class="col-md-9">
-      <form class="form-inline">
-        <input type="text" class="form-control" ng-model="foods.search" placeholder="Search food">
-        <button type="submit" ng-click="foods.searchFoods()" class="btn btn-info">Search</button>
-      </form>
-      <br>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Results:
-        </div>
-        <div class="panel-body">
-          <ul class="list-group">
-            <li class="list-group-item" ng-click="foods.getItem(item.fields.item_id)" ng-repeat="item in foods.results.hits">
-              {{ item.fields.item_name }} - {{ item.fields.brand_name }}
-            </li>
-          </ul>
-        </div>
-      </div>
+      <search ng-show="!foods.found"></search>
+      <item ng-show="foods.found"></item>
     </div>
   </div>
 </div>
