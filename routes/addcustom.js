@@ -1,36 +1,28 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
-var crypto = require('crypto');
+var jsonParser = require('body-parser').json();
 
-var jsonParser = bodyParser.json();
 var url = 'mongodb://plan:eat@ds021711.mlab.com:21711/planeat';
 
-function hash(pwd) {
-  var hash = crypto.createHash('sha256');
-  hash.update(pwd);
-  return hash.digest('base64');
-}
-
 router.post('/', jsonParser, function(req, res) {
-  var newUser = {
-    username: req.body.user,
-    pwd: hash(req.body.pwd),
-    session: ""
-  }
+  var payload = req.body;
   mongoClient.connect(url, function(err, db) {
     if (!err) {
-      db.createCollection(newUser.username);
       var users = db.collection('users');
-      users.insert(newUser, function(err, result) {
+      users.find({session: Number(req.cookies.session)}).toArray(function(err, results) {
         if (!err) {
-          res.sendStatus(201);
-          db.close();
+          payload.type = 'food';
+          payload.origin = 'custom';
+          var user = db.collection(results[0].username);
+          user.insert(payload, function(err, result) {
+            res.json(payload).status(201);
+          })
         }
         else {
           res.sendStatus(500);
         }
+        db.close();
       })
     }
     else {
