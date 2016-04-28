@@ -11,6 +11,14 @@ function foods($http, $window) {
   vm.found = false;
   vm.customItem = {};
 
+  vm.populateCustom = function() {
+    var custom = $http.get('http://localhost:3000/getfoods?type=food&origin=custom');
+    custom.then(function(data) {
+      vm.customItems = data.data;
+    })
+  }
+  vm.populateCustom();
+
   vm.searchFoods = function() {
     var foods = $http.post('http://localhost:3000/searchfoods', {search: vm.search});
     foods.then(function(data) {
@@ -48,6 +56,13 @@ function foods($http, $window) {
       vm.item = data.data;
       vm.found = true;
       calcPercentages();
+      vm.populateCustom();
     })
+  }
+
+  vm.showCustom = function(item) {
+    vm.item = item;
+    vm.found = true;
+    calcPercentages();
   }
 }
