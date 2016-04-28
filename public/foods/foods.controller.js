@@ -19,11 +19,18 @@ function foods($http, $window) {
   }
   vm.populateCustom();
 
+  vm.populateSaved = function() {
+    var saved = $http.get('http://localhost:3000/getfoods?type=food&origin=api');
+    saved.then(function(data) {
+      vm.savedItems = data.data;
+    })
+  }
+  vm.populateSaved();
+
   vm.searchFoods = function() {
     var foods = $http.post('http://localhost:3000/searchfoods', {search: vm.search});
     foods.then(function(data) {
       vm.results = JSON.parse(data.data);
-      console.log(vm.results);
     })
   }
 
@@ -51,7 +58,9 @@ function foods($http, $window) {
   }
 
   vm.addCustom = function() {
-    var item = $http.post('http://localhost:3000/addcustom', vm.customItem);
+    vm.customItem.type = "food";
+    vm.customItem.origin = "custom"
+    var item = $http.post('http://localhost:3000/additem', vm.customItem);
     item.then(function(data) {
       vm.item = data.data;
       vm.found = true;
@@ -64,5 +73,35 @@ function foods($http, $window) {
     vm.item = item;
     vm.found = true;
     calcPercentages();
+  }
+
+  vm.showSaved = function(item) {
+    vm.item = item;
+    vm.found = true;
+    calcPercentages();
+  }
+
+  vm.saveItem = function() {
+    var item = vm.item;
+    item.type = "food";
+    item.origin = "api";
+    var add = $http.post('http://localhost:3000/additem', item);
+    add.then(function(data) {
+      vm.populateSaved();
+    })
+  }
+
+  vm.deleteItem = function() {
+    var delUrl = 'http://localhost:3000/deleteitem?id=' + vm.item.item_id;
+    var del = $http.delete(delUrl);
+    del.then(function(data) {
+      if (vm.item.origin === "custom") {
+        vm.populateCustom();
+      }
+      else {
+        vm.populateSaved();
+      }
+      vm.found = false;
+    })
   }
 }
