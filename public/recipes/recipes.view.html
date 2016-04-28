@@ -1,3 +1,61 @@
 <div class="container">
-  <h1>RECIPES</h1>
+  <div class="col-md-3">
+    <form class="form-inline">
+      <input type="text" class="form-control" ng-model="recipes.search" placeholder="Search recipe">
+      <button type="submit" ng-click="recipes.searchRecipes()" class="btn btn-info">Search</button>
+    </form>
+    <br>
+    <button type="button" ng-click="recipes.addRecipe()" class="btn btn-primary btn-block">Add a recipe</button>
+    <br>
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">
+        Your recipes
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item" ng-click="foods.showRecipes(recipe)" ng-repeat="item in foods.recipes">
+            {{ item.recipe_name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        Add a recipe
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <label for="recipeName">Name</label>
+            <input type="text" ng-model="recipes.recipe_name" class="form-control" id="recipeName">
+        </form>
+        <br>
+        <label>Ingridients</label>
+        <button class="btn btn-default">Add</button>
+        <hr>
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                NUTRITION
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <textarea class="form-control" ng-model="recipe.notes" rows="3" placeholder="NOTES"></textarea>
+          </div>
+        </div>
+        <br>
+        <button class="btn btn-primary">Save recipe</button>
+        <button class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
