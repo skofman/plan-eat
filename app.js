@@ -16,6 +16,7 @@ var checklogin = require('./routes/checklogin');
 var logout = require('./routes/logout');
 var searchfoods = require('./routes/searchfoods');
 var getitem = require('./routes/getitem');
+var addcustom = require('./routes/addcustom')
 
 app.use(cookieParser());
 app.use('/signup', signup);
@@ -25,6 +26,7 @@ app.use('/checklogin', checklogin);
 app.use('/logout', logout);
 app.use('/searchfoods', searchfoods);
 app.use('/getitem', getitem);
+app.use('/addcustom', addcustom);
 app.use(express.static('./public'));
 
 var port = process.env.PORT || 3000;

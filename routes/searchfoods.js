@@ -8,7 +8,7 @@ var appKey = '08e65f6fa81d4d32f1a24b5b153426a0';
 
 router.post('/', jsonParser, function(req, res) {
   var phrase = req.body.search.split(' ').join('%20') + '?';
-  var apiUrl = "https://api.nutritionix.com/v1_1/search/" + phrase + "results=0%3A50&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=" + appId + "&appKey=" + appKey;
+  var apiUrl = "https://api.nutritionix.com/v1_1/search/" + phrase + "results=0%3A50&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Cupc%2Citem_id%2Cbrand_id&appId=" + appId + "&appKey=" + appKey;
   request(apiUrl, function(err, response, body) {
     res.json(body).status(200);
   })

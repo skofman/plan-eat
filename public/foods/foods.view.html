@@ -3,8 +3,10 @@
     <div class="col-md-3">
       <button type="button" ng-click="foods.found = !foods.found" ng-show="foods.found" class="btn btn-primary btn-block">Back to search results</button>
       <br ng-show="foods.found">
+      <button type="button" data-toggle="modal" data-target="#customModal" class="btn btn-primary btn-block">Add custom item</button>
+      <br>
       <div class="panel panel-danger">
-        <div class="panel-heading">
+        <div class="panel-heading text-center">
           Your custom foods
         </div>
         <div class="panel-body">
@@ -12,7 +14,7 @@
         </div>
       </div>
       <div class="panel panel-info">
-        <div class="panel-heading">
+        <div class="panel-heading text-center">
           Your saved foods
         </div>
         <div class="panel-body">
@@ -23,6 +25,130 @@
     <div class="col-md-9">
       <search ng-show="!foods.found"></search>
       <item ng-show="foods.found"></item>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="customModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create custom food item</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="itemDescription">Food item name</label>
+                <input type="text" ng-model="foods.customItem.item_name" class="form-control input-sm" id="itemDescription" placeholder="Enter item name">
+              </div>
+              <div class="form-group">
+                <label for="itemBrand">Food brand name</label>
+                <input type="text" ng-model="foods.customItem.brand_name" class="form-control input-sm" id="itemBrand" placeholder="Enter brand">
+              </div>
+            </div>
+          </div>
+          <hr>
+          <label for="servings">Serving</label>
+          <div class="row" id="servings">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="itemServingSize">Size</label>
+                <input type="number" ng-model="foods.customItem.nf_serving_size_qty" class="form-control input-sm" id="itemServingSize">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="itemServingUnit">Units</label>
+                <input type="text" ng-model="foods.customItem.nf_serving_size_unit" class="form-control input-sm" id="itemServingUnit">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="itemWeight">Weight (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_serving_weight_grams" class="form-control input-sm" id="itemWeight" placeholder="Optional">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="itemQty">Per container</label>
+                <input type="number" ng-model="foods.customItem.nf_servings_per_container" class="form-control input-sm" id="itemQty" placeholder="Optional">
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="itemCals">Calories</label>
+                <input type="number" ng-model="foods.customItem.nf_calories" class="form-control input-sm" id="itemCals">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="itemFatCals">Calories from fat</label>
+                <input type="number" ng-model="foods.customItem.nf_calories_from_fat" class="form-control input-sm" id="itemFatCals">
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="itemTotalFat">Total Fat (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_total_fat" class="form-control input-sm" id="itemTotalFat">
+                <label for="itemSatFat">Saturated Fat (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_saturated_fat" class="form-control input-sm" id="itemSatFat">
+                <label for="itemTransFat">Trans Fat (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_trans_fatty_acid" class="form-control input-sm" id="itemTransFat">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="itemCarbs">Total Carbs (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_total_carbohydrate" class="form-control input-sm" id="itemCarbs">
+                <label for="itemFiber">Dietary Fiber (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_dietary_fiber" class="form-control input-sm" id="itemFiber">
+                <label for="itemSugar">Sugars (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_sugars" class="form-control input-sm" id="itemSugar">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="itemProtein">Protein (g)</label>
+                <input type="number" ng-model="foods.customItem.nf_protein" class="form-control input-sm" id="itemProtein">
+                <label for="itemChol">Cholesterol (mg)</label>
+                <input type="number" ng-model="foods.customItem.nf_cholesterol" class="form-control input-sm" id="itemChol">
+                <label for="itemSodium">Sodium (mg)</label>
+                <input type="number" ng-model="foods.customItem.nf_sodium" class="form-control input-sm" id="itemSodium">
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="itemVitA">Vitamin A (%)</label>
+                <input type="number" ng-model="foods.customItem.nf_vitamin_a_dv" class="form-control input-sm" id="itemVitA">
+                <label for="itemCalcium">Calcium (%)</label>
+                <input type="number" ng-model="foods.customItem.nf_calcium_dv" class="form-control input-sm" id="itemCalcium">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="itemVitC">Vitamin C (%)</label>
+                <input type="number" ng-model="foods.customItem.nf_vitamin_c_dv" class="form-control input-sm" id="itemVitC">
+                <label for="itemIron">Iron (%)</label>
+                <input type="number" ng-model="foods.customItem.nf_iron_dv" class="form-control input-sm" id="itemIron">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" data-dismiss="modal" ng-click="foods.addCustom()" class="btn btn-primary">Save item</button>
+      </div>
     </div>
   </div>
 </div>
