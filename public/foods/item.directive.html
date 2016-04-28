@@ -155,6 +155,7 @@
         <p>Calorie breakdown: {{ foods.item.fatpct }}% fat, {{ foods.item.carbpct }}% carbs, {{ foods.item.protpct }}% protein.</p>
       </div>
     </div>
-    <button type="button" class="btn btn-info">Save item</button>
+    <button type="button" ng-if="!foods.item.origin" ng-click="foods.saveItem()" class="btn btn-info">Save item</button>
+    <button type="button" ng-if="foods.item.origin" ng-click="foods.deleteItem()" class="btn btn-danger">Delete item</button>
   </div>
 </div>

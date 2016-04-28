@@ -22,7 +22,11 @@
           Your saved foods
         </div>
         <div class="panel-body">
-
+          <ul class="list-group">
+            <li class="list-group-item" ng-click="foods.showSaved(item)" ng-repeat="item in foods.savedItems">
+              {{ item.item_name }}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
