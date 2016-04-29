@@ -5,7 +5,7 @@
       <button type="submit" ng-click="recipes.searchRecipes()" class="btn btn-info">Search</button>
     </form>
     <br>
-    <button type="button" ng-click="recipes.addRecipe()" class="btn btn-primary btn-block">Add a recipe</button>
+    <button type="button" ng-click="recipes.clearRecipe(); recipes.new = true; recipes.update = false;" class="btn btn-primary btn-block">Add a recipe</button>
     <br>
     <div class="panel panel-info">
       <div class="panel-heading text-center">
@@ -13,48 +13,196 @@
       </div>
       <div class="panel-body">
         <ul class="list-group">
-          <li class="list-group-item" ng-click="foods.showRecipes(recipe)" ng-repeat="item in foods.recipes">
-            {{ item.recipe_name }}
+          <li class="list-group-item" ng-click="recipes.showRecipe(item)" ng-repeat="item in recipes.recipes">
+            {{ item.item_name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-danger">
+      <div class="panel-heading text-center">
+        Your custom foods
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item" ng-click="item.qty = 1; recipes.recipe.ingridients.push(item); recipes.updateRecipe()" ng-repeat="item in recipes.customItems">
+            {{ item.item_name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">
+        Your saved foods
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item" ng-click="item.qty = 1; recipes.recipe.ingridients.push(item); recipes.updateRecipe()" ng-repeat="item in recipes.savedItems">
+            {{ item.item_name }}
           </li>
         </ul>
       </div>
     </div>
   </div>
   <div class="col-md-9">
-    <div class="panel panel-default">
+    <div class="panel panel-default" ng-if="recipes.update || recipes.new">
       <div class="panel-heading text-center">
-        Add a recipe
+        <span ng-if="recipes.new">Add a recipe</span>
+        <span ng-if="recipes.update">Your recipe</span>
       </div>
       <div class="panel-body">
         <form>
           <div class="form-group">
             <label for="recipeName">Name</label>
-            <input type="text" ng-model="recipes.recipe_name" class="form-control" id="recipeName">
+            <input type="text" ng-model="recipes.recipe.item_name" class="form-control" id="recipeName">
         </form>
         <br>
         <label>Ingridients</label>
-        <button class="btn btn-default">Add</button>
-        <hr>
         <div class="panel panel-default">
           <div class="panel-body">
-
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="item in recipes.recipe.ingridients">
+                <div class="row">
+                  <div class="col-md-9">
+                    {{ item.item_name }}
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" ng-change="recipes.updateRecipe()" ng-model="item.qty" class="form-control input-sm" placeholder="Qty.">
+                  </div>
+                  <div class="col-md-1">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </div>
+              </div>
+            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                NUTRITION
+            <div class="panel panel-info">
+              <div class="panel-body" id="facts">
+                <h3 id="nutrilabel">Nutrition Facts</h3>
+                <p class="description">Serving size {{ recipes.recipe.nf_serving_size_qty }} {{ recipes.recipe.nf_serving_size_unit }} <span ng-show="recipes.recipe.nf_serving_weight_grams">({{ recipes.recipe.nf_serving_weight_grams }}g)</span></p>
+                <p class="description" ng-show="recipes.recipe.nf_servings_per_container">Servings per container: {{ recipes.recipe.nf_servings_per_container }}</p>
+                <hr class="nutrition">
+                <h6>Amount per Serving</h6>
+                <hr>
+                <div class="row">
+                  <div class="col-md-5">
+                    <p><b>Calories</b> {{ recipes.recipe.nf_calories }}</h5>
+                  </div>
+                  <div class="col-md-7">
+                    <p class="pull-right">Calories from fat {{ recipes.recipe.nf_calories_from_fat }}</p>
+                  </div>
+                </div>
+                <hr class="nutrition">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h6 class="pull-right">% Daily Values*</h6>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p><b>Total fat</b> {{ recipes.recipe.nf_total_fat }}g</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h5 class="pull-right">{{ recipes.recipe.fatdv }}%</h5>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p>Saturated fat {{ recipes.recipe.nf_saturated_fat }}g</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h5 class="pull-right">{{ recipes.recipe.satfatdv }}%</h5>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p>Trans Fat {{ recipes.recipe.nf_trans_fatty_acid }}g</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h5 class="pull-right">{{ recipes.recipe.transfatdv }}%</h5>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p><b>Cholesterol</b> {{ recipes.recipe.nf_cholesterol }}mg</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h5 class="pull-right">{{ recipes.recipe.choldv }}%</h5>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p><b>Sodium</b> {{ recipes.recipe.nf_sodium }}mg</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h5 class="pull-right">{{ recipes.recipe.sodiumdv }}%</h5>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p><b>Total Carbohydrate</b> {{ recipes.recipe.nf_total_carbohydrate }}g</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h5 class="pull-right">{{ recipes.recipe.carbdv }}%</h5>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p>Dietary Fiber {{ recipes.recipe.nf_dietary_fiber }}g</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h5 class="pull-right">{{ recipes.recipe.fiberdv }}%</h5>
+                  </div>
+                </div>
+                <hr>
+                <p>Sugars {{ recipes.recipe.nf_sugars }}g</p>
+                <hr>
+                <p><b>Protein</b> {{ recipes.recipe.nf_protein }}g</p>
+                <hr class="nutrition">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p>Vitamin A {{ recipes.recipe.nf_vitamin_a_dv }}%</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Vitamin C {{ recipes.recipe.nf_vitamin_c_dv }}%</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p>Calcium {{ recipes.recipe.nf_calcium_dv }}%</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Iron {{ recipes.recipe.nf_iron_dv }}%</p>
+                  </div>
+                </div>
+                <hr>
+                <p>
+                  * Percent Daily Values are based on a 2000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.
+                </p>
               </div>
             </div>
           </div>
           <div class="col-md-8">
-            <textarea class="form-control" ng-model="recipe.notes" rows="3" placeholder="NOTES"></textarea>
+            <textarea class="form-control" ng-model="recipes.recipe.notes" rows="20" placeholder="NOTES"></textarea>
           </div>
         </div>
         <br>
-        <button class="btn btn-primary">Save recipe</button>
-        <button class="btn btn-default">Cancel</button>
+        <button class="btn btn-primary" ng-if="recipes.new" ng-click="recipes.saveRecipe()">Save recipe</button>
+        <button class="btn btn-primary" ng-if="recipes.update" ng-click="recipes.updateRecipes()">Update recipe</button>
+        <button class="btn btn-default" ng-click="recipes.clearRecipe()">Cancel</button>
+        <button class="btn btn-danger pull-right" ng-if="recipes.update" ng-click="recipes.deleteRecipe()">Delete recipe</button> 
       </div>
     </div>
   </div>
