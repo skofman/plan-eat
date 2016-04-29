@@ -19,6 +19,7 @@ var getitem = require('./routes/getitem');
 var additem = require('./routes/additem');
 var getfoods = require('./routes/getfoods');
 var deleteitem = require('./routes/deleteitem');
+var updateitem = require('./routes/updateitem')
 
 app.use(cookieParser());
 app.use('/signup', signup);
@@ -31,6 +32,7 @@ app.use('/getitem', getitem);
 app.use('/additem', additem);
 app.use('/getfoods', getfoods);
 app.use('/deleteitem', deleteitem);
+app.use('/updateitem', updateitem);
 app.use(express.static('./public'));
 
 var port = process.env.PORT || 3000;

@@ -92,7 +92,7 @@ function foods($http, $window) {
   }
 
   vm.deleteItem = function() {
-    var delUrl = 'http://localhost:3000/deleteitem?id=' + vm.item.item_id;
+    var delUrl = 'http://localhost:3000/deleteitem/' + vm.item.item_id;
     var del = $http.delete(delUrl);
     del.then(function(data) {
       if (vm.item.origin === "custom") {
