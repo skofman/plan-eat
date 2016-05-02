@@ -1,3 +1,25 @@
 <div class="container">
-  <h1>CALENDAR</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" ng-click="calendar.prevWeek(); calendar.getDate()" class="btn btn-default"><span class="glyphicon glyphicon-menu-left"></span></button>
+      <button type="button" class="btn btn-default" ng-click="calendar.currentWeek(); calendar.getDate()">today</button>
+    </div>
+    <div class="col-md-6 text-center">
+      <h4>{{ calendar.dates }}</h4>
+    </div>
+    <div class="col-md-3">
+      <button type="button" ng-click="calendar.nextWeek(); calendar.getDate()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-menu-right"></span></button>
+    </div>
+  </div>
+  <br>
+  <div class="panel panel-default day" ng-repeat="item in calendar.week">
+    <div class="panel-heading text-center">
+      {{ item.day }} - {{ item.date }}
+    </div>
+    <div class="panel-body">
+      <div class="text-center">
+        <button type="button" class="btn btn-success">Add</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -5,7 +5,6 @@ var mongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://plan:eat@ds021711.mlab.com:21711/planeat';
 
 router.get('/', function(req, res) {
-  var col = "";
   mongoClient.connect(url, function(err, db) {
     if (!err) {
       var users = db.collection('users');
