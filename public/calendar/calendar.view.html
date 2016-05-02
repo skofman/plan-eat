@@ -16,9 +16,58 @@
     <div class="panel-heading text-center">
       {{ item.day }} - {{ item.date }}
     </div>
-    <div class="panel-body">
-      <div class="text-center">
-        <button type="button" class="btn btn-success">Add</button>
+    <div class="panel-body calbody">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="i in item.items">
+          <p>{{ i.item_name }}</p>
+          <p>{{ i.qty }} servings - <span class="glyphicon glyphicon-trash"></span></p>
+        </li>
+      </ul>
+    </div>
+    <div class="panel-footer">
+      <button type="button" class="btn btn-success center-block addbutt" ng-click="calendar.weekday = item.day" data-toggle="modal" data-target="#foodModal">Add</button>
+      <br>
+      <p>Calories: {{ item.calories }}</p>
+      <p>Protein: {{ item.protein }}g</p>
+      <p>Carbs: {{ item.carbs }}g</p>
+      <p>Fat: {{ item.fat }}g</p>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="foodModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Add food to calendar</h4>
+      </div>
+      <div class="modal-body">
+        <select class="form-control" ng-model="calendar.selection" ng-change="calendar.show()">
+          <option>My recipes</option>
+          <option>Custom foods</option>
+          <option>Saved foods</option>
+          <option>Search foods</option>
+        </select>
+        <br>
+        <form class="form-inline" ng-if="calendar.search">
+          <input type="text" class="form-control" ng-model="calendar.searchItem" placeholder="Search food">
+          <button type="submit" ng-click="calendar.searchFoods()" class="btn btn-info">Search</button>
+        </form>
+        <br>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="item in calendar.add">
+            <div class="row">
+              <div class="col-md-8">
+                {{ item.item_name }}
+              </div>
+              <div class="col-md-2">
+                <input type="number" class="form-control" ng-model="calendar.servings" placeholder="Qty">
+              </div>
+              <div class="col-md-2">
+                <button type="button" class="btn btn-success" ng-click="calendar.addItem(item)" data-dismiss="modal">Add</div>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

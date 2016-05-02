@@ -43,37 +43,37 @@ router.get('/:increment', function(req, res) {
                 var obj = results[0].weeks;
                 obj[term] = {
                   sunday: {
-                    day: "Sunday",
+                    day: "Sun",
                     date: moment(start).format('MMM D'),
                     items: []
                   },
                   monday: {
-                    day: "Monday",
+                    day: "Mon",
                     date: moment(moment(start).add(1, 'days')).format('MMM D'),
                     items: []
                   },
                   tuesday: {
-                    day: "Tuesday",
+                    day: "Tue",
                     date: moment(moment(start).add(2, 'days')).format('MMM D'),
                     items: []
                   },
                   wednesday: {
-                    day: "Wednesday",
+                    day: "Wed",
                     date: moment(moment(start).add(3, 'days')).format('MMM D'),
                     items: []
                   },
                   thursday: {
-                    day: "Thursday",
+                    day: "Thu",
                     date: moment(moment(start).add(4, 'days')).format('MMM D'),
                     items: []
                   },
                   friday: {
-                    day: "Friday",
+                    day: "Fri",
                     date: moment(moment(start).add(5, 'days')).format('MMM D'),
                     items: []
                   },
                   saturday: {
-                    day: "Saturday",
+                    day: "Sat",
                     date: moment(moment(start).add(6, 'days')).format('MMM D'),
                     items: []
                   }
