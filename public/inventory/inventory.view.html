@@ -32,21 +32,41 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <ul class="list-group">
-            <li class="list-group-item" ng-repeat="item in inventory.items">
+            <li class="list-group-item" ng-repeat="item in inventory.items" ng-click="inventory.item = item" data-toggle="modal" data-target="#qtyModal">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-10">
                   {{ item.item_name }}
                 </div>
                 <div class="col-md-2">
                   Qty: {{ item.qty }}
                 </div>
-                <div class="col-md-2">
-                  Servings:
-                </div>
               </div>
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="qtyModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Edit item</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-10">
+            {{ inventory.item.item_name }}
+          </div>
+          <div class="col-md-2">
+            <input type="number" class="form-control" ng-model="inventory.item.qty">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="inventory.populateInventory()">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="inventory.updateInventory()">Update</button>
       </div>
     </div>
   </div>

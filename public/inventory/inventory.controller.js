@@ -38,4 +38,11 @@ function inventory($http) {
       vm.populateInventory();
     })
   }
+
+  vm.updateInventory = function() {
+    var update = $http.put('/updateinventory', vm.item);
+    update.then(function(data) {
+      vm.populateInventory();
+    })
+  }
 }

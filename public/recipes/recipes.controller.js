@@ -41,7 +41,7 @@ function recipes($http) {
   }
 
   vm.populateCustom = function() {
-    var custom = $http.get('http://localhost:3000/getfoods?type=food&origin=custom');
+    var custom = $http.get('/getfoods?type=food&origin=custom');
     custom.then(function(data) {
       vm.customItems = data.data;
     })
@@ -49,7 +49,7 @@ function recipes($http) {
   vm.populateCustom();
 
   vm.populateSaved = function() {
-    var saved = $http.get('http://localhost:3000/getfoods?type=food&origin=api');
+    var saved = $http.get('/getfoods?type=food&origin=api');
     saved.then(function(data) {
       vm.savedItems = data.data;
     })
@@ -57,7 +57,7 @@ function recipes($http) {
   vm.populateSaved();
 
   vm.populateRecipes = function() {
-    var recipes = $http.get('http://localhost:3000/getfoods?type=recipe');
+    var recipes = $http.get('/getfoods?type=recipe');
     recipes.then(function(data) {
       vm.recipes = data.data;
     })
@@ -101,7 +101,7 @@ function recipes($http) {
 
   vm.saveRecipe = function() {
     vm.recipe.type = "recipe";
-    var add = $http.post('http://localhost:3000/additem', vm.recipe);
+    var add = $http.post('/additem', vm.recipe);
     add.then(function(data) {
       vm.populateRecipes();
       vm.new = false;
@@ -118,11 +118,11 @@ function recipes($http) {
   vm.updateRecipes = function() {
     vm.update = false;
     delete vm.recipe._id;
-    $http.put('http://localhost:3000/updateitem', vm.recipe);
+    $http.put('/updateitem', vm.recipe);
   }
 
   vm.deleteRecipe = function() {
-    var delUrl = 'http://localhost:3000/deleteitem/' + vm.recipe.item_id;
+    var delUrl = '/deleteitem/' + vm.recipe.item_id;
     var del = $http.delete(delUrl);
     del.then(function(data) {
       vm.populateRecipes();
