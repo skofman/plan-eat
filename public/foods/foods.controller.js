@@ -85,14 +85,14 @@ function foods($http, $window) {
     var item = vm.item;
     item.type = "food";
     item.origin = "api";
-    var add = $http.post('http://localhost:3000/additem', item);
+    var add = $http.post('/additem', item);
     add.then(function(data) {
       vm.populateSaved();
     })
   }
 
   vm.deleteItem = function() {
-    var delUrl = 'http://localhost:3000/deleteitem/' + vm.item.item_id;
+    var delUrl = '/deleteitem/' + vm.item.item_id;
     var del = $http.delete(delUrl);
     del.then(function(data) {
       if (vm.item.origin === "custom") {

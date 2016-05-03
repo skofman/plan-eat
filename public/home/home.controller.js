@@ -8,9 +8,8 @@ function home($http, $window) {
   var vm = this;
 
   vm.logout = function() {
-    $http.get('http://localhost:3000/logout');
+    $http.get('/logout');
   }
 
   vm.active = 'home';
-
 }

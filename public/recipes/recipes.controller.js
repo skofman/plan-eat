@@ -101,7 +101,7 @@ function recipes($http) {
 
   vm.saveRecipe = function() {
     vm.recipe.type = "recipe";
-    var add = $http.post('http://localhost:3000/additem', vm.recipe);
+    var add = $http.post('/additem', vm.recipe);
     add.then(function(data) {
       vm.populateRecipes();
       vm.new = false;
@@ -118,11 +118,11 @@ function recipes($http) {
   vm.updateRecipes = function() {
     vm.update = false;
     delete vm.recipe._id;
-    $http.put('http://localhost:3000/updateitem', vm.recipe);
+    $http.put('/updateitem', vm.recipe);
   }
 
   vm.deleteRecipe = function() {
-    var delUrl = 'http://localhost:3000/deleteitem/' + vm.recipe.item_id;
+    var delUrl = '/deleteitem/' + vm.recipe.item_id;
     var del = $http.delete(delUrl);
     del.then(function(data) {
       vm.populateRecipes();
