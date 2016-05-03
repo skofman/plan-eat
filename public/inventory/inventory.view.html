@@ -71,3 +71,34 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="invModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Find item</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-inline text-center">
+          <input type="text" class="form-control" ng-model="inventory.searchItem" placeholder="Search food">
+          <button type="submit" ng-click="inventory.searchFoods()" class="btn btn-info">Search</button>
+        </form>
+        <br>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="item in inventory.add">
+            <div class="row">
+              <div class="col-md-8">
+                {{ item.item_name }}
+              </div>
+              <div class="col-md-2">
+                <input type="number" class="form-control" ng-model="inventory.servings" placeholder="Qty">
+              </div>
+              <div class="col-md-2">
+                <button type="button" class="btn btn-success" ng-click="inventory.addItem(item)" data-dismiss="modal">Add</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

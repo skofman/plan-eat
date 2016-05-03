@@ -13,7 +13,7 @@ function calendar($http) {
   vm.servings = 1;
 
   vm.getDate = function() {
-    var url = 'http://localhost:3000/getdate/' + vm.increment;
+    var url = '/getdate/' + vm.increment;
     var date = $http.get(url);
     date.then(function(data) {
       vm.week = data.data.week;
@@ -50,19 +50,19 @@ function calendar($http) {
   vm.show = function() {
     switch(vm.selection) {
       case "My recipes":
-        var recipes = $http.get('http://localhost:3000/getfoods?type=recipe');
+        var recipes = $http.get('/getfoods?type=recipe');
         recipes.then(function(data) {
           vm.add = data.data;
         })
         break;
       case "Custom foods":
-        var custom = $http.get('http://localhost:3000/getfoods?type=food&origin=custom');
+        var custom = $http.get('/getfoods?type=food&origin=custom');
         custom.then(function(data) {
           vm.add = data.data;
         })
         break;
       case "Saved foods":
-        var saved = $http.get('http://localhost:3000/getfoods?type=food&origin=api');
+        var saved = $http.get('/getfoods?type=food&origin=api');
         saved.then(function(data) {
           vm.add = data.data;
         })
@@ -76,7 +76,7 @@ function calendar($http) {
   vm.show();
 
   vm.searchFoods = function() {
-    var foods = $http.post('http://localhost:3000/searchfoods', {search: vm.searchItem});
+    var foods = $http.post('/searchfoods', {search: vm.searchItem});
     foods.then(function(data) {
       var obj = JSON.parse(data.data);
       for (var i = 0; i < 20; i++) {
@@ -111,7 +111,7 @@ function calendar($http) {
         vm.week.saturday.items.push(item);
         break;
     }
-    var url = 'http://localhost:3000/updatecalendar/' + vm.increment;
+    var url = '/updatecalendar/' + vm.increment;
     var calendarItem = $http.put(url, vm.week);
     calendarItem.then(function(data) {
       vm.getDate();
