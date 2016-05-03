@@ -12,7 +12,7 @@ function foods($http, $window) {
   vm.customItem = {};
 
   vm.populateCustom = function() {
-    var custom = $http.get('http://localhost:3000/getfoods?type=food&origin=custom');
+    var custom = $http.get('/getfoods?type=food&origin=custom');
     custom.then(function(data) {
       vm.customItems = data.data;
     })
@@ -20,7 +20,7 @@ function foods($http, $window) {
   vm.populateCustom();
 
   vm.populateSaved = function() {
-    var saved = $http.get('http://localhost:3000/getfoods?type=food&origin=api');
+    var saved = $http.get('/getfoods?type=food&origin=api');
     saved.then(function(data) {
       vm.savedItems = data.data;
     })
@@ -28,14 +28,14 @@ function foods($http, $window) {
   vm.populateSaved();
 
   vm.searchFoods = function() {
-    var foods = $http.post('http://localhost:3000/searchfoods', {search: vm.search});
+    var foods = $http.post('/searchfoods', {search: vm.search});
     foods.then(function(data) {
       vm.results = JSON.parse(data.data);
     })
   }
 
   vm.getItem = function(id) {
-    var item = $http.post('http://localhost:3000/getitem', {id: id});
+    var item = $http.post('/getitem', {id: id});
     item.then(function(data) {
       vm.item = data.data;
       vm.found = true;
@@ -60,7 +60,7 @@ function foods($http, $window) {
   vm.addCustom = function() {
     vm.customItem.type = "food";
     vm.customItem.origin = "custom"
-    var item = $http.post('http://localhost:3000/additem', vm.customItem);
+    var item = $http.post('/additem', vm.customItem);
     item.then(function(data) {
       vm.item = data.data;
       vm.found = true;

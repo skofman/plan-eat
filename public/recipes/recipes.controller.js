@@ -41,7 +41,7 @@ function recipes($http) {
   }
 
   vm.populateCustom = function() {
-    var custom = $http.get('http://localhost:3000/getfoods?type=food&origin=custom');
+    var custom = $http.get('/getfoods?type=food&origin=custom');
     custom.then(function(data) {
       vm.customItems = data.data;
     })
@@ -49,7 +49,7 @@ function recipes($http) {
   vm.populateCustom();
 
   vm.populateSaved = function() {
-    var saved = $http.get('http://localhost:3000/getfoods?type=food&origin=api');
+    var saved = $http.get('/getfoods?type=food&origin=api');
     saved.then(function(data) {
       vm.savedItems = data.data;
     })
@@ -57,7 +57,7 @@ function recipes($http) {
   vm.populateSaved();
 
   vm.populateRecipes = function() {
-    var recipes = $http.get('http://localhost:3000/getfoods?type=recipe');
+    var recipes = $http.get('/getfoods?type=recipe');
     recipes.then(function(data) {
       vm.recipes = data.data;
     })
