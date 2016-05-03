@@ -22,6 +22,9 @@ router.post('/', jsonParser, function(req, res) {
   mongoClient.connect(url, function(err, db) {
     if (!err) {
       db.createCollection(newUser.username);
+      var user = db.collection(newUser.username);
+      user.insert({type: 'inventory', items: []});
+      user.insert({type: 'calendar', weeks: {}});
       var users = db.collection('users');
       users.insert(newUser, function(err, result) {
         if (!err) {
