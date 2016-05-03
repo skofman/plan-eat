@@ -1,3 +1,53 @@
 <div class="container">
-  <h1>INVENTORY</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" data-toggle="modal" data-target="#invModal" class="btn btn-primary btn-block">Add inventory item</button>
+      <br>
+      <div class="panel panel-danger">
+        <div class="panel-heading text-center">
+          Your custom foods
+        </div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item" ng-click="inventory.addCustom(item)" ng-repeat="item in inventory.customItems">
+              {{ item.item_name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading text-center">
+          Your saved foods
+        </div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item" ng-click="inventory.addSaved(item)" ng-repeat="item in inventory.savedItems">
+              {{ item.item_name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="item in inventory.items">
+              <div class="row">
+                <div class="col-md-8">
+                  {{ item.item_name }}
+                </div>
+                <div class="col-md-2">
+                  Qty: {{ item.qty }}
+                </div>
+                <div class="col-md-2">
+                  Servings:
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -22,6 +22,8 @@ var deleteitem = require('./routes/deleteitem');
 var updateitem = require('./routes/updateitem');
 var getdate = require('./routes/getdate');
 var updatecalendar = require('./routes/updatecalendar');
+var getinventory = require('./routes/getinventory');
+var addinventory = require('./routes/addinventory');
 
 app.use(cookieParser());
 app.use('/signup', signup);
@@ -37,6 +39,8 @@ app.use('/deleteitem', deleteitem);
 app.use('/updateitem', updateitem);
 app.use('/getdate', getdate);
 app.use('/updatecalendar', updatecalendar);
+app.use('/getinventory', getinventory);
+app.use('/addinventory', addinventory);
 app.use(express.static('./public'));
 
 var port = process.env.PORT || 3000;
