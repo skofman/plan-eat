@@ -1,3 +1,146 @@
 <div class="container">
-  <h1>HOME</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-success">
+        <div class="panel-heading text-center">
+          {{ home.plan.day }} - {{ home.plan.date }}
+        </div>
+        <div class="panel-body">
+          <div class="panel panel-default" ng-repeat="item in home.plan.items">
+            <div class="panel-body">
+              <p>{{ item.item_name }}</p>
+              <p>Servings: {{ item.qty }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Your Daily Summary
+        </div>
+        <div class="panel-body">
+          <div ng-if="!home.goals">
+            <h4>You have no set targets!</h4>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nutriModal">Set nutrition targets</button>
+        </div>
+        <ul class="list-group" ng-if="home.goals">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2">
+                <h4>Targets:</h4>
+              </div>
+              <div class="col-md-4">
+                <h4>Calories: {{ home.goals.calories }}</h4>
+              </div>
+              <div class="col-md-2">
+                <h5>Protein: {{ home.goals.protein }}g</h5>
+              </div>
+              <div class="col-md-2">
+                <h5>Carbs: {{ home.goals.carbs }}g</h5>
+              </div>
+              <div class="col-md-2">
+                <h5>Fats: {{ home.goals.fat }}g</h5>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2">
+                <h4>Planned:</h4>
+              </div>
+              <div class="col-md-4">
+                <h4>Calories: {{ home.calories }}</h4>
+              </div>
+              <div class="col-md-2">
+                <h5>Protein: {{ home.protein }}g</h5>
+              </div>
+              <div class="col-md-2">
+                <h5>Carbs: {{ home.carbs }}g</h5>
+              </div>
+              <div class="col-md-2">
+                <h5>Fats: {{ home.fat }}g</h5>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2">
+                <h4>Remaining:</h4>
+              </div>
+              <div class="col-md-4">
+                <h4>Calories: {{ home.goals.calories - home.calories }}</h4>
+              </div>
+              <div class="col-md-2">
+                <h5>Protein: {{ home.goals.protein - home.protein }}g</h5>
+              </div>
+              <div class="col-md-2">
+                <h5>Carbs: {{ home.goals.carbs - home.carbs}}g</h5>
+              </div>
+              <div class="col-md-2">
+                <h5>Fats: {{ home.goals.fat - home.fat }}g</h5>
+              </div>
+            </div>
+          </li>
+          <br>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nutriModal">Update targets</button>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="nutriModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Nutrition Targets</h4>
+    </div>
+    <div class="modal-body">
+      <label>Calories</label>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="number" class="form-control" ng-model="home.calTarget" ng-change="home.calcTargets()">
+        </div>
+      </div>
+      <br>
+      <label>Protein %</label>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="number" class="form-control" ng-model="home.protTarget" ng-change="home.calcTargets()">
+        </div>
+        <div class="col-md-6">
+          <h5>{{ home.protGrams }}g</h5>
+        </div>
+      </div>
+      <br>
+      <label>Carbs %</label>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="number" class="form-control" ng-model="home.carbTarget" ng-change="home.calcTargets()">
+        </div>
+        <div class="col-md-6">
+          <h5>{{ home.carbGrams }}g</h5>
+        </div>
+      </div>
+      <br>
+      <label>Fat %</label>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="number" class="form-control" ng-model="home.fatTarget" ng-change="home.calcTargets()">
+        </div>
+        <div class="col-md-6">
+          <h5>{{ home.fatGrams }}g</h5>
+        </div>
+      </div>
+      <br>
+      <div class="alert alert-danger" role="alert" ng-if="!home.totalTarget">
+        Total percentages are not 100%
+      </div>
+    </div>
+    <div class="modal-footer" ng-if="home.totalTarget">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="home.updateTargets()">Update</button>
+    </div>
+  </div>
 </div>
