@@ -4,7 +4,7 @@ app.controller('calendarController', calendar);
 
 app.$inject = ['$http'];
 
-function calendar($http) {
+function calendar($http, $window, $document) {
   var vm = this;
 
   vm.increment = 0;
@@ -117,4 +117,10 @@ function calendar($http) {
     })
   }
 
+  vm.shoppingList = function() {
+    var shoplist = $http.get('/shoppinglist/' + vm.increment);
+    shoplist.then(function(data) {
+      vm.list = data.data;
+    })
+  }
 }
