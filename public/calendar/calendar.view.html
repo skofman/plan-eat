@@ -9,6 +9,7 @@
     </div>
     <div class="col-md-3">
       <button type="button" ng-click="calendar.nextWeek(); calendar.getDate()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-menu-right"></span></button>
+      <button type="button" ng-click="calendar.shoppingList()" data-toggle="modal" data-target="#listModal" class="btn btn-default pull-right"><span class="glyphicon glyphicon-list-alt"></span></button>
     </div>
   </div>
   <br>
@@ -64,6 +65,29 @@
               </div>
               <div class="col-md-2">
                 <button type="button" class="btn btn-success" ng-click="calendar.addItem(item)" data-dismiss="modal">Add</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="listModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Shopping List</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="item in calendar.list">
+            <div class="row">
+              <div class="col-md-9">
+                {{ item.item_name }}
+              </div>
+              <div class="col-md-3">
+                Qty.: {{ item.qty }}
               </div>
             </div>
           </li>
