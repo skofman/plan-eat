@@ -8,6 +8,8 @@ function inventory($http) {
   var vm = this;
 
   vm.add = [];
+  vm.upc = "";
+  vm.scanned = [];
 
   vm.populateCustom = function() {
     var custom = $http.get('/getfoods?type=food&origin=custom');
@@ -73,4 +75,11 @@ function inventory($http) {
     vm.servings = 1;
   }
 
+  vm.findUPC = function() {
+    var upc = $http.post('/findupc', {upc: vm.upc});
+    upc.then(function(data) {
+      vm.scanned.push(JSON.parse(data.data));
+      vm.upc = "";
+    })
+  }
 }
