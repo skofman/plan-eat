@@ -46,4 +46,46 @@ router.post('/', jsonParser, function(req, res) {
   })
 })
 
+router.post('/scanned', jsonParser, function(req, res) {
+  mongoClient.connect(url, function(err, db) {
+    if (!err) {
+      var users = db.collection('users');
+      users.find({session: Number(req.cookies.session)}).toArray(function(err, results) {
+        if (!err) {
+          var user = db.collection(results[0].username);
+          user.find({type: 'inventory'}).toArray(function(err, results) {
+            if (!err) {
+              var inv = results[0].items;
+              for (var i = 0; i < req.body.length; i++) {
+                var exists = false;
+                for (var j = 0; j < inv.length; j++) {
+                  if (req.body[i].item_id === inv[j].item_id) {
+                    inv[j].qty += req.body[i].qty;
+                    exists = true;
+                    break;
+                  }
+                }
+                if (!exists) {
+                  inv.push(req.body[i]);
+                }
+              }
+              user.update({type: 'inventory'}, {$set: {items: inv}});
+              res.sendStatus(200);
+            }
+            else {
+              res.sendStatus(500);
+            }
+          })
+        }
+        else {
+          res.sendStatus(500);
+        }
+      })
+    }
+    else {
+      res.sendStatus(500);
+    }
+  })
+})
+
 module.exports = router;

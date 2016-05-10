@@ -27,6 +27,7 @@ var addinventory = require('./routes/addinventory');
 var updateinventory = require('./routes/updateinventory');
 var gethome = require('./routes/gethome');
 var shoppinglist = require('./routes/shoppinglist');
+var findupc = require('./routes/findupc');
 
 app.use(cookieParser());
 app.use('/signup', signup);
@@ -47,6 +48,7 @@ app.use('/addinventory', addinventory);
 app.use('/updateinventory', updateinventory);
 app.use('/gethome', gethome);
 app.use('/shoppinglist', shoppinglist);
+app.use('/findupc', findupc);
 app.use(express.static('./public'));
 
 var port = process.env.PORT || 3000;
