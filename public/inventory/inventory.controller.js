@@ -78,8 +78,17 @@ function inventory($http) {
   vm.findUPC = function() {
     var upc = $http.post('/findupc', {upc: vm.upc});
     upc.then(function(data) {
-      vm.scanned.push(JSON.parse(data.data));
+      var item = JSON.parse(data.data);
+      item.qty = 1;
+      vm.scanned.push(item);
       vm.upc = "";
+    })
+  }
+
+  vm.addScanned = function() {
+    var inv = $http.post('/addinventory/scanned', vm.scanned);
+    inv.then(function(data) {
+      vm.populateInventory();
     })
   }
 }
