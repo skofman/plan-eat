@@ -7,7 +7,7 @@ A website for people who want to plan their meals
 * Weekly shopping list can be printed out.
 * Foods can be found in the database or add manually.
 * Recipes can be added and saved.
-* Invenotry can be managed.
+* Inventory can be managed.
  
 ## Built with
 * JavaScript
