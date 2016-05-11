@@ -1,13 +1,14 @@
-<div class="container">
+<homebar></homebar>
+<div class="container" id="home">
   <div class="row">
     <div class="col-md-3">
-      <div class="panel panel-success">
+      <div class="panel panel-primary">
         <div class="panel-heading text-center">
           {{ home.plan.day }} - {{ home.plan.date }}
         </div>
         <div class="panel-body">
-          <div class="panel panel-default" ng-repeat="item in home.plan.items">
-            <div class="panel-body">
+          <div class="panel panel-primary" ng-repeat="item in home.plan.items">
+            <div class="panel-body small-item">
               <p>{{ item.item_name }}</p>
               <p>Servings: {{ item.qty }}
             </div>
@@ -24,6 +25,7 @@
           <div ng-if="!home.goals">
             <h4>You have no set targets!</h4>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nutriModal">Set nutrition targets</button>
+          </div>
         </div>
         <ul class="list-group" ng-if="home.goals">
           <li class="list-group-item">

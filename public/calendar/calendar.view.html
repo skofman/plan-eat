@@ -1,3 +1,4 @@
+<homebar></homebar>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -9,19 +10,19 @@
     </div>
     <div class="col-md-3">
       <button type="button" ng-click="calendar.nextWeek(); calendar.getDate()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-menu-right"></span></button>
-      <button type="button" ng-click="calendar.shoppingList()" data-toggle="modal" data-target="#listModal" class="btn btn-default pull-right"><span class="glyphicon glyphicon-list-alt"></span></button>
+      <button type="button" ng-click="calendar.shoppingList()" data-toggle="modal" data-target="#listModal" class="btn btn-default pull-right">Shopping list</button>
     </div>
   </div>
   <br>
-  <div class="panel panel-default day" ng-repeat="item in calendar.week">
+  <div class="panel panel-primary day" ng-repeat="item in calendar.week">
     <div class="panel-heading text-center">
       {{ item.day }} - {{ item.date }}
     </div>
     <div class="panel-body calbody">
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="i in item.items">
+        <li class="list-group-item small-item" ng-repeat="i in item.items">
           <p>{{ i.item_name }}</p>
-          <p>{{ i.qty }} servings - <span class="glyphicon glyphicon-trash"></span></p>
+          <p>{{ i.qty }} servings</p>
         </li>
       </ul>
     </div>

@@ -11,6 +11,7 @@ function home($http, $window) {
     var logout = $http.get('/logout');
     logout.then(function(data) {
       $window.location.href = '/';
+      vm.loggedin = false;
     })
   }
 

@@ -1,51 +1,27 @@
 body {
-  padding-top: 80px;
-}
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  padding-top: 70px; }
 
-#menu {
-  margin-left: 30px;
-}
+bar nav {
+  background-color: transparent !important;
+  border-bottom: 0 !important; }
 
-.nutrition {
-  border-bottom: 5px solid black;
-  margin: 0;
-}
-
-#nutrilabel {
-  margin: 0;
+bar .navbar-brand {
+  font-size: 1.6em;
   font-weight: bold;
-}
+  color: black; }
 
-#facts hr {
-  margin: 0;
-}
+bar .btn {
+  margin-left: 5px; }
 
-#facts p,
-#facts h5,
-#facts h6 {
-  margin: 0;
-  font-size: 0.9em;
-}
+homebar nav {
+  background-color: #3B5469 !important; }
 
-.box {
-  border: 2px solid grey;
-  text-align: center;
-  width: 90px;
-}
-
-.box h5 {
-  margin-bottom: 5px;
-}
-
-.list-group-item:hover {
-  cursor: pointer;
-  background-color: #f7cac9;
-}
-
-#customModal hr {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
+.panel-primary {
+  border-color: #3B5469; }
+  .panel-primary .panel-heading {
+    background-color: #3B5469 !important; }
 
 .day {
   width: 14.2%;
@@ -53,10 +29,53 @@ body {
   border: 1px solid grey;
   display: inline-block;
   margin: 0;
-  min-height: 700px;
-}
+  min-height: 700px; }
 
 .calbody {
-  min-height: 600px !important;
-  height: auto;
-}
+  min-height: 500px !important;
+  height: auto; }
+
+.small-item {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .small-item p {
+    margin-bottom: 0; }
+
+.panel-footer p {
+  margin-bottom: 5px; }
+
+#customModal hr {
+  margin-top: 0;
+  margin-bottom: 5px; }
+
+#menu {
+  margin-left: 30px; }
+
+.nutrition {
+  border-bottom: 5px solid black;
+  margin: 0; }
+
+#nutrilabel {
+  margin: 0;
+  font-weight: bold; }
+
+#facts hr {
+  margin: 0; }
+
+#facts p,
+#facts h5,
+#facts h6 {
+  margin: 0;
+  font-size: 0.9em; }
+
+.box {
+  border: 2px solid grey;
+  text-align: center;
+  width: 90px; }
+
+.box h5 {
+  margin-bottom: 5px; }
+
+.list-group-item:hover {
+  cursor: pointer;
+  background-color: #f7cac9; }

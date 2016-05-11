@@ -1,3 +1,4 @@
+<homebar></homebar>
 <div class="container">
   <div class="col-md-3">
     <form class="form-inline">
@@ -7,7 +8,7 @@
     <br>
     <button type="button" ng-click="recipes.clearRecipe(); recipes.new = true; recipes.update = false;" class="btn btn-primary btn-block">Add a recipe</button>
     <br>
-    <div class="panel panel-info">
+    <div class="panel panel-primary">
       <div class="panel-heading text-center">
         Your recipes
       </div>
@@ -19,7 +20,7 @@
         </ul>
       </div>
     </div>
-    <div class="panel panel-danger">
+    <div class="panel panel-primary">
       <div class="panel-heading text-center">
         Your custom foods
       </div>
@@ -31,7 +32,7 @@
         </ul>
       </div>
     </div>
-    <div class="panel panel-info">
+    <div class="panel panel-primary">
       <div class="panel-heading text-center">
         Your saved foods
       </div>
@@ -45,7 +46,7 @@
     </div>
   </div>
   <div class="col-md-9">
-    <div class="panel panel-default" ng-if="recipes.update || recipes.new">
+    <div class="panel panel-primary" ng-if="recipes.update || recipes.new">
       <div class="panel-heading text-center">
         <span ng-if="recipes.new">Add a recipe</span>
         <span ng-if="recipes.update">Your recipe</span>
@@ -58,7 +59,7 @@
         </form>
         <br>
         <label>Ingridients</label>
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
           <div class="panel-body">
             <ul class="list-group">
               <li class="list-group-item" ng-repeat="item in recipes.recipe.ingridients">
@@ -80,7 +81,7 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
               <div class="panel-body" id="facts">
                 <h3 id="nutrilabel">Nutrition Facts</h3>
                 <p class="description">Serving size {{ recipes.recipe.nf_serving_size_qty }} {{ recipes.recipe.nf_serving_size_unit }} <span ng-show="recipes.recipe.nf_serving_weight_grams">({{ recipes.recipe.nf_serving_weight_grams }}g)</span></p>
@@ -202,7 +203,7 @@
         <button class="btn btn-primary" ng-if="recipes.new" ng-click="recipes.saveRecipe()">Save recipe</button>
         <button class="btn btn-primary" ng-if="recipes.update" ng-click="recipes.updateRecipes()">Update recipe</button>
         <button class="btn btn-default" ng-click="recipes.clearRecipe()">Cancel</button>
-        <button class="btn btn-danger pull-right" ng-if="recipes.update" ng-click="recipes.deleteRecipe()">Delete recipe</button> 
+        <button class="btn btn-danger pull-right" ng-if="recipes.update" ng-click="recipes.deleteRecipe()">Delete recipe</button>
       </div>
     </div>
   </div>

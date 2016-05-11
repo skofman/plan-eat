@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-body">
     <a href="#/foods/item">{{ foods.item.brand_name }}</a>
     <h4>{{ foods.item.item_name }}</h4>
@@ -6,7 +6,7 @@
 </div>
 <div class="row">
   <div class="col-md-4">
-    <div class="panel panel-info">
+    <div class="panel panel-primary">
       <div class="panel-body" id="facts">
         <h3 id="nutrilabel">Nutrition Facts</h3>
         <p class="description">Serving size {{ foods.item.nf_serving_size_qty }} {{ foods.item.nf_serving_size_unit }} <span ng-show="foods.item.nf_serving_weight_grams">({{ foods.item.nf_serving_weight_grams }}g)</span></p>
@@ -121,7 +121,7 @@
     </div>
   </div>
   <div class="col-md-8">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
       <div class="panel-body">
         <h4>Nutrition summary:</h4>
         <div class="row">
