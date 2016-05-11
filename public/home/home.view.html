@@ -26,68 +26,68 @@
             <h4>You have no set targets!</h4>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nutriModal">Set nutrition targets</button>
           </div>
+          <ul class="list-group" ng-if="home.goals">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <h4>Targets:</h4>
+                </div>
+                <div class="col-md-4">
+                  <h4>Calories: {{ home.goals.calories }}</h4>
+                </div>
+                <div class="col-md-2">
+                  <h5>Protein: {{ home.goals.protein }}g</h5>
+                </div>
+                <div class="col-md-2">
+                  <h5>Carbs: {{ home.goals.carbs }}g</h5>
+                </div>
+                <div class="col-md-2">
+                  <h5>Fats: {{ home.goals.fat }}g</h5>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <h4>Planned:</h4>
+                </div>
+                <div class="col-md-4">
+                  <h4>Calories: {{ home.calories }}</h4>
+                </div>
+                <div class="col-md-2">
+                  <h5>Protein: {{ home.protein }}g</h5>
+                </div>
+                <div class="col-md-2">
+                  <h5>Carbs: {{ home.carbs }}g</h5>
+                </div>
+                <div class="col-md-2">
+                  <h5>Fats: {{ home.fat }}g</h5>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <h4>Remaining:</h4>
+                </div>
+                <div class="col-md-4">
+                  <h4>Calories: {{ home.goals.calories - home.calories }}</h4>
+                </div>
+                <div class="col-md-2">
+                  <h5>Protein: {{ home.goals.protein - home.protein }}g</h5>
+                </div>
+                <div class="col-md-2">
+                  <h5>Carbs: {{ home.goals.carbs - home.carbs}}g</h5>
+                </div>
+                <div class="col-md-2">
+                  <h5>Fats: {{ home.goals.fat - home.fat }}g</h5>
+                </div>
+              </div>
+            </li>
+            <br>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nutriModal">Update targets</button>
+          </ul>
         </div>
-        <ul class="list-group" ng-if="home.goals">
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-md-2">
-                <h4>Targets:</h4>
-              </div>
-              <div class="col-md-4">
-                <h4>Calories: {{ home.goals.calories }}</h4>
-              </div>
-              <div class="col-md-2">
-                <h5>Protein: {{ home.goals.protein }}g</h5>
-              </div>
-              <div class="col-md-2">
-                <h5>Carbs: {{ home.goals.carbs }}g</h5>
-              </div>
-              <div class="col-md-2">
-                <h5>Fats: {{ home.goals.fat }}g</h5>
-              </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-md-2">
-                <h4>Planned:</h4>
-              </div>
-              <div class="col-md-4">
-                <h4>Calories: {{ home.calories }}</h4>
-              </div>
-              <div class="col-md-2">
-                <h5>Protein: {{ home.protein }}g</h5>
-              </div>
-              <div class="col-md-2">
-                <h5>Carbs: {{ home.carbs }}g</h5>
-              </div>
-              <div class="col-md-2">
-                <h5>Fats: {{ home.fat }}g</h5>
-              </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-md-2">
-                <h4>Remaining:</h4>
-              </div>
-              <div class="col-md-4">
-                <h4>Calories: {{ home.goals.calories - home.calories }}</h4>
-              </div>
-              <div class="col-md-2">
-                <h5>Protein: {{ home.goals.protein - home.protein }}g</h5>
-              </div>
-              <div class="col-md-2">
-                <h5>Carbs: {{ home.goals.carbs - home.carbs}}g</h5>
-              </div>
-              <div class="col-md-2">
-                <h5>Fats: {{ home.goals.fat - home.fat }}g</h5>
-              </div>
-            </div>
-          </li>
-          <br>
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nutriModal">Update targets</button>
-        </ul>
       </div>
     </div>
   </div>
