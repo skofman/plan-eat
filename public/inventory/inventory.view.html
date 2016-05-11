@@ -1,9 +1,17 @@
+<homebar></homebar>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <button type="button" data-toggle="modal" data-target="#invModal" class="btn btn-primary">Add inventory item</button>
-      <button type="button" data-toggle="modal" data-target="#upcModal" class="btn btn-default"><i class="glyphicon glyphicon-barcode"></i></button>
-      <div class="panel panel-danger">
+      <div class="row">
+        <div class="col-md-8">
+          <button type="button" data-toggle="modal" data-target="#invModal" class="btn btn-primary btn-block">Add inventory item</button>
+        </div>
+        <div class="col-md-4">
+          <button type="button" data-toggle="modal" data-target="#upcModal" class="btn btn-default btn-block"><i class="glyphicon glyphicon-barcode"></i></button>
+        </div>
+      </div>
+      <br>
+      <div class="panel panel-primary">
         <div class="panel-heading text-center">
           Your custom foods
         </div>
@@ -15,7 +23,7 @@
           </ul>
         </div>
       </div>
-      <div class="panel panel-info">
+      <div class="panel panel-primary">
         <div class="panel-heading text-center">
           Your saved foods
         </div>
@@ -29,7 +37,7 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div class="panel panel-default">
+      <div class="panel panel-primary">
         <div class="panel-body">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="item in inventory.items" ng-click="inventory.item = item" data-toggle="modal" data-target="#qtyModal">
